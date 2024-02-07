@@ -2,4 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="topla">#0027FF</color>
+    <color name="carp">#BA1D1D</color>
 </resources>
