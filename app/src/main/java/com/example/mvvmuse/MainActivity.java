@@ -2,6 +2,7 @@ package com.example.mvvmuse;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -21,17 +22,23 @@ public class MainActivity extends AppCompatActivity {
 
         binding.setMainActivityNesnesi(this);
 
-        binding.setHesaplamaSonucu(viewModel.getSonuc());
+
+        viewModel.getSonuc().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                binding.setHesaplamaSonucu(s);
+            }
+        });
 
     }
     public void buttonToplamaTikla(String alinanSayi1,String alinanSayi2){
         viewModel.toplamaYap(alinanSayi1,alinanSayi2);
-        binding.setHesaplamaSonucu(viewModel.getSonuc());
+
 
     }
     public void buttonCarpmaTikla(String alinanSayi1,String alinanSayi2){
         viewModel.carpmaYap(alinanSayi1,alinanSayi2);
-        binding.setHesaplamaSonucu(viewModel.getSonuc());
+
 
     }
 
